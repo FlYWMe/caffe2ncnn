@@ -89,8 +89,8 @@ int NeuralDecisionRegForest::forward_inplace(Mat& bottom_top_blob, const Option&
 			{
 				left_child_offset -= num_split_nodes_per_tree_;
 				right_child_offset -= num_split_nodes_per_tree_;
-				off=(t)*num_split_nodes_per_tree_+ left_child_offset;
-				off2=(t)*num_split_nodes_per_tree_+ right_child_offset;
+				off=(t)*num_leaf_nodes_per_tree_+ left_child_offset;
+				off2=(t)*num_leaf_nodes_per_tree_+ right_child_offset;
 				routing_leaf_prob_[off] = routing_split_prob_.row(t)[current_offset] * bottom_top_blob[dim_offset];
 				routing_leaf_prob_[off2] = routing_split_prob_.row(t)[current_offset] * ( 1.0 - bottom_top_blob[dim_offset]);
 			}
